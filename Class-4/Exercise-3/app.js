@@ -4,11 +4,12 @@ const minute = document.querySelector("#minute");
 const second = document.querySelector("#second");
 const reset = document.querySelector("#reset");
 let timerRunning = true;
-
+let interval;
 // create functions
 function startTimer() {
+  if (!(interval === null || interval === undefined)) return;
   timerRunning = true;
-  const interval = setInterval(() => {
+  interval = setInterval(() => {
     let counter = Number(second.innerText);
     // stop the timer if timerRunning
     if (timerRunning === false) return;
@@ -29,6 +30,8 @@ function startTimer() {
 
 function resetTimer() {
   timerRunning = false;
+  clearInterval(interval);
+  interval = null;
   minute.innerText = "00";
   second.innerText = "00";
 }
@@ -37,5 +40,7 @@ function resetTimer() {
 start.addEventListener("click", startTimer);
 stop.addEventListener("click", () => {
   timerRunning = false;
+  clearInterval(interval);
+  interval = null;
 });
 reset.addEventListener("click", resetTimer);
