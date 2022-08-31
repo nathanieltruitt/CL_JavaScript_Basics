@@ -5,6 +5,7 @@ const button = document.querySelector("button");
 const linkContainer = document.querySelector(".link-container");
 const apiURL = "https://opengraph.io/api/1.1/site";
 // API token to OpenGraph API.
+// using another js file to store this information locally outside of github. Look at line 19 on index.html
 const apiKey = data.token;
 let savedItems = localStorage.getItem("linksData") || [];
 if (typeof savedItems === "string") {
